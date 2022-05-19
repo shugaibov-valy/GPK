@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>registration</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body style="background-image: url(static/assets/images/back.png);">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <img src="static/assets/images/icon.jpg" width="50px">
+      <!--    <a class="navbar-brand" href="#">ГПК</a>-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">{{ login }}</a>
+          </li>
+
+          <li class="nav-item">
+            <b><a class="nav-link active" aria-current="page" href="/main">Главная</a></b>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" id="search_input">
+          <!--        <button class="btn btn-outline-success" type="submit">Поиск</button> -->
+        </form>
+      </div>
+    </div>
+  </nav>
+  {% if enum != "директор" %}
+  <a href="/add_student">
+    <button style="float: right; margin-right: 20px; margin-top: 10px; margin-bottom: 20px" class="btn btn-success"
+      type="submit">Добавить студента</button>
+  </a>
+  {% endif %}
+  <p style="color: green;">{{ message }}</p>
+  <table class="table" id="table_students">
+    <thead>
+      {% if enum == "бухгалтер" %}
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">#</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Отчество</th>
+        <th scope="col">Дата рождения</th>
+        <th scope="col">Форма обучения</th>
+        <th scope="col">Задолженность</th>
+        <th scope="col">Приказ</th>
+        <th scope="col">Курс</th>
+        <th scope="col">Группа</th>
+        <th scope="col">Факультет</th>
+      </tr>
+      {% elif enum == "методист" %}
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">#</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Отчество</th>
+        <th scope="col">Статус</th>
+        <th scope="col">Док. образование</th>
+        <th scope="col">Email</th>
+        <th scope="col">Регион</th>
+        <th scope="col">Телефон</th>
+        <th scope="col">СНИЛС</th>
+        <th scope="col">Курс</th>
+        <th scope="col">Группа</th>
+        <th scope="col">Факультет</th>
+        <th scope="col">Дата рождения</th>
+
+      </tr>
+      {% endif %}
+    </thead>
+    <tbody>
+      {% if enum == "бухгалтер" %}
+      {% for student in data %}
+      <tr>
+        <th scope="row"><a href="/del_student/id={{ student.id }}"><img src="static/assets/images/trash.png"
+              width="20px"></a></th>
+        <th>{{ student.id }}</th>
+        <td>{{ student.name }}</td>
+        <td>{{ student.surname }}</td>
+        <td>{{ student.patronymic }}</td>
+        <td>{{ student.birthday }}</td>
+        <td>{{ student.form_study }}</td>
+        <td>{{ student.debt }}</td>
+        <td>{{ student.command }}</td>
+        <td>{{ student.course }}</td>
+        <td>{{ student.group }}</td>
+        <td>{{ student.faculty }}</td>
+      </tr>
+      {% endfor %}
+      
+      {% elif enum == "методист" %}
+      {% for student in data %}
+      <tr>
+        <th scope="row"><a href="/del_student/id={{ student.id }}"><img src="static/assets/images/trash.png"
+              width="20px"></a></th>
+        <th>{{ student.id }}</th>
+        <td>{{ student.name }}</td>
+        <td>{{ student.surname }}</td>
+        <td>{{ student.patronymic }}</td>
+        <td>{{ student.status }}</td>
+        <td>{{ student.education }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.region }}</td>
+        <td>{{ student.phone }}</td>
+        <td>{{ student.snils }}</td>
+        <td>{{ student.course }}</td>
+        <td>{{ student.group }}</td>
+        <td>{{ student.faculty }}</td>
+        <td>{{ student.birthday }}</td>
+
+      </tr>
+      {% endfor %}
+
+      {% endif %}
+    </tbody>
+  </table>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+  $(function () {
+    window.setInterval(function () {
+      var search = $(search_input).val();
+      if (search == '') {
+        updateStudent()
+      } else {
+        searchStudent(search)
+      }
+    }, 1000)
+
+
+    function updateStudent(search_text) {
+      $.ajax({
+        url: "/update_students",
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+          $(table_students).replaceWith(data)
+        }
+      });
+    }
+
+    function searchStudent(search_text) {
+      $.ajax({
+        url: "/update_students/search=" + search_text,
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+          $(table_students).replaceWith(data)
+        }
+      });
+    }
+
+  });
+
+
+</script>
+
+</html>

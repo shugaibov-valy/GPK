@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>registration</title>
+    <link rel="stylesheet" type="text/css" href="static/assets/css/reg.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+<body>
+   <form method="post" class="mt-4">
+     <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Логин</label>
+    <input type="login" class="form-control" id="exampleInputEmail1" name="login" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Пароль</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Повторный пароль</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="conf_password" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Выберите роль:</label>	
+    <select type="text" class="form-select" id="exampleInputPassword1" name="enum" required>
+          <option value="директор">директор</option>  
+          <option value="бухгалтер">бухгалтер</option>
+          <option value="методист">методист</option>
+    </select>
+   </div>
+   <p style="color: green">{{ message }}</p>
+   <button type="submit" class="btn btn-warning">Зарегистрироваться</button>
+   </div>
+   </form>
+</body>
+
+</html>

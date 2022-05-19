@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>registration</title>
+		<link rel="stylesheet" type="text/css" href="static/assets/css/auth.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	</head>
+ <body class="text-center" style="background-image: url(static/assets/images/back.png);">
+    
+<main class="form-signin w-100 m-auto">
+  <center>
+  <form method="post"><br>
+    <img src="static/assets/images/icon.jpg"><br><br>
+    <p style="font-size: 30px;">Личный кабинет</p>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="login" name="login" placeholder="Логин" required>
+      <label for="login">Логин</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>
+      <label for="password">Пароль</label>
+    </div>
+
+
+    <p style="color: red;">{{ error_message }}</p>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Вход</button><br><br>
+    <a href="/reg"><button class="w-100 btn btn-lg btn-warning" type="button">Регистрация</button></a>
+  </form>
+  </center>
+</main>
+
+	</body>
+
+
+
+
+
+
+
+</html>

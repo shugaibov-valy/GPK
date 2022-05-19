@@ -1,0 +1,84 @@
+<table class="table" id="table_students">
+  <thead>
+    {% if enum == "бухгалтер" %}
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">#</th>
+      <th scope="col">Имя</th>
+      <th scope="col">Фамилия</th>
+      <th scope="col">Отчество</th>
+      <th scope="col">Дата рождения</th>
+      <th scope="col">Форма обучения</th>
+      <th scope="col">Задолженность</th>
+      <th scope="col">Приказ</th>
+      <th scope="col">Курс</th>
+      <th scope="col">Группа</th>
+      <th scope="col">Факультет</th>
+    </tr>
+    {% elif enum == "методист" %}
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">#</th>
+      <th scope="col">Имя</th>
+      <th scope="col">Фамилия</th>
+      <th scope="col">Отчество</th>
+      <th scope="col">Статус</th>
+      <th scope="col">Док. образование</th>
+      <th scope="col">Email</th>
+      <th scope="col">Регион</th>
+      <th scope="col">Телефон</th>
+      <th scope="col">СНИЛС</th>
+      <th scope="col">Курс</th>
+      <th scope="col">Группа</th>
+      <th scope="col">Факультет</th>
+      <th scope="col">Дата рождения</th>
+
+    </tr>
+    {% endif %}
+  </thead>
+  <tbody>
+    {% if enum == "бухгалтер" %}
+    {% for student in data %}
+    <tr>
+      <th scope="row"><a href="/del_student/id={{ student.id }}"><img src="static/assets/images/trash.png"
+            width="20px"></a></th>
+      <th>{{ student.id }}</th>
+      <td>{{ student.name }}</td>
+      <td>{{ student.surname }}</td>
+      <td>{{ student.patronymic }}</td>
+      <td>{{ student.birthday }}</td>
+      <td>{{ student.form_study }}</td>
+      <td>{{ student.debt }}</td>
+      <td>{{ student.command }}</td>
+      <td>{{ student.course }}</td>
+      <td>{{ student.group }}</td>
+      <td>{{ student.faculty }}</td>
+    </tr>
+    {% endfor %}
+    
+    {% elif enum == "методист" %}
+    {% for student in data %}
+    <tr>
+      <th scope="row"><a href="/del_student/id={{ student.id }}"><img src="static/assets/images/trash.png"
+            width="20px"></a></th>
+      <th>{{ student.id }}</th>
+      <td>{{ student.name }}</td>
+      <td>{{ student.surname }}</td>
+      <td>{{ student.patronymic }}</td>
+      <td>{{ student.status }}</td>
+      <td>{{ student.education }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.region }}</td>
+      <td>{{ student.phone }}</td>
+      <td>{{ student.snils }}</td>
+      <td>{{ student.course }}</td>
+      <td>{{ student.group }}</td>
+      <td>{{ student.faculty }}</td>
+      <td>{{ student.birthday }}</td>
+
+    </tr>
+    {% endfor %}
+
+    {% endif %}
+  </tbody>
+</table>  

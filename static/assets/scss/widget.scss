@@ -1,0 +1,129 @@
+/*------------------------------------------------------------------
+[Table of contents]
+This file include css code for widget, element in sidebar and footer
+
+- #General
+- #Search
+- #Categories
+- #Recent Post
+- #Tag
+- #Gallery
+- #Widget About
+-------------------------------------------------------------------*/
+@import "_global/_variables";
+$footer-text-dark: #1d1b20;
+
+
+.swin-widget{
+	&.swin-widget:not(:last-child){
+		margin-bottom: 60px;
+	}
+	&:before {
+		content: '';
+		clear: both;
+	}
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+/* #Search */
+.widget-search{
+	.title-widget{
+		padding: 30px;
+	}
+	form{
+		position: relative;
+		input.search-input{
+			width: 100%;
+			border: none;
+			background-color: #f6f6f6;
+			padding: 0 20px;
+			line-height: 40px;
+		}
+		span.search-submit{
+			position: absolute;
+			right: 20px;
+			line-height: 40px;
+			bottom: 0;
+		}
+	}
+}
+
+/* #Categories */
+.widget-categories{
+	.link{
+		&:not(:last-child){
+			border-bottom: 1px solid #eeeeee;
+		}
+	    padding: 9px 0;
+	    font-size: 14px;
+	    display: block;
+	    color: #29272e;
+	    position: relative;
+	    transition: all 0.3s ease;
+	    -webkit-transition: all 0.3s ease;
+	    i{
+			display: none;
+		}
+		span.text{
+			text-transform: capitalize;
+		}
+		span.badge{
+			float: right;
+			background: none;
+			color:#7c7b80;
+		}
+		&:before{
+			transition: all 0.3s ease;
+	    	-webkit-transition: all 0.3s ease;
+		}
+		&:hover{
+			padding-left: 15px;
+			color: $main-color;
+			.badge{
+				color:$main-color;
+			}
+		}
+		&:before{
+			content: '';
+			position: absolute;
+			background-color: $main-color;
+			width: 10px;
+			height: 1px;
+			border-radius: 50%;
+			bottom: 50%;
+			opacity: 0;
+			left: 0;
+			transition: left 0.3s ease-in-out;
+		}
+		&:hover:before{
+			opacity: 1;
+		}
+	}
+}
+
+
+/* #Tag */
+.widget-tag {
+	ul {
+		li {
+			a {
+				background-color: #eaeaea;
+				font-weight: 700;
+				color: #000;
+				text-transform: uppercase;
+				display: inline-block;
+				padding: 5px 10px 0;
+				margin: 5px 0;
+				font-size: 12px;
+
+				&:hover {
+					background-color: darken(#eaeaea, 5%);
+				}
+			}
+		}
+	}
+}

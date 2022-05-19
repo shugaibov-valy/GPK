@@ -1,0 +1,2 @@
+class AuthLoginUserNotFound(Exception):
+    pass 

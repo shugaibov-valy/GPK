@@ -1,0 +1,27 @@
+#vse { 
+ width: 600px; 
+ position: absolute; 
+ top: 50px; 
+ left: 450px; 
+} 
+h1 { 
+ text-align: center; 
+} 
+#d { 
+ position: absolute; 
+ top: 75px; 
+ width: 600px; 
+ left: 0px; 
+ 
+} 
+#f { 
+ position: absolute; 
+ top: 10px; 
+ width: 600px; 
+ left: 10px; 
+} 
+button { 
+ position: absolute; 
+ top: 810px; 
+ right: 100px; 
+}
